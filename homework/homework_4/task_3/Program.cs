@@ -4,20 +4,25 @@
 
 // 6, 1, 33 -> [6, 1, 33]
 
+int PromptInt(string description)
+{
+    Console.Write(description);
+    return Convert.ToInt32(Console.ReadLine());
+}
 
-int[] CreateArray(int len)
+int[] CreateArray(int len, int min, int max)
 {
     int[] array = new int[len];
     for (int i = 0; i < len; i++)
     {
-        array[i] = new Random().Next(1, 10);
+        array[i] = new Random().Next(min, max);
     }
     return array;
 }
 
 
 void PrintArray(int[] array)
-{
+{   
     Console.Write(array[0]);
     for (int i = 1; i < array.Length; i++)
     {
@@ -25,5 +30,13 @@ void PrintArray(int[] array)
     }
 }
 
+void Main()
+{
+    int min = PromptInt("Enter thr min_number: ");
+    int max = PromptInt("Enter the max_number: ");
+    int len = PromptInt("Enter the length of array: ");
+    int[] array = CreateArray(len, min, max);
+    PrintArray(array);
+}
 
-PrintArray(CreateArray(8));
+Main();
