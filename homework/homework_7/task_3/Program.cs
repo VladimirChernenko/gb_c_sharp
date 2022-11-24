@@ -8,31 +8,31 @@
 
 int[,] CreateMatrix(int m, int n)
 {
-    int[,] matrix = new double[m, n];
+    int[,] matrix = new int[m, n];
         for (int i = 0; i < m; i++)
         {
             for (int j = 0; j < n; j++)
             {
-                matrix[i, j] = new Random().Next(-100, 100);
+                matrix[i, j] = new Random().Next(-10, 10);
             }
         }
         return matrix;  
 }
 
-double Average(double array)
+double Average(int[] array)
 {
-    double result = 0;
+    int result = 0;
     for (int i = 0; i < array.Length; i++)
     {
         result += array[i];   
     }
-    return result / Convert.ToDouble(array.Length);
+    return (Convert.ToDouble(result)) / Convert.ToDouble(array.Length);
 }
 
 double[] AverageColumn(int[,] matrix)
 {
-    int[] column = new int[matrix.GetLength(1)];
-    int[] result = new int[matrix.GetLength(1)];
+    int[] column = new int[matrix.GetLength(0)];
+    double[] result = new double[matrix.GetLength(1)];
     for (int i = 0; i < matrix.GetLength(1); i++)
     {
         for (int j = 0; j < matrix.GetLength(0); j++)
@@ -44,28 +44,30 @@ double[] AverageColumn(int[,] matrix)
     return result;
 }
 
-void PrintArray(int[] array)
+void PrintArray(double[] array)
 {   
-    Console.Write($"[{array[0]}");
+    Console.Write($"{Math.Round(array[0], 2)}");
     for (int i = 1; i < array.Length; i++)
     {
-        Console.Write($", {array[i]}");
+        Console.Write($", {Math.Round(array[i], 2)}");
     }
-    Console.Write("]");
+    Console.WriteLine();
 }
 
-void PrintMatrix(double[,] matrix)
+void PrintMatrix(int[,] matrix)
 {
     for (int i = 0; i < matrix.GetLength(0); i++)
     {
         for (int j = 0; j < matrix.GetLength(1); j++)
         {
-            Console.Write($"{Math.Round(matrix[i, j], 2)} ");
+            Console.Write($"{matrix[i, j]} ");
         }
         Console.WriteLine();
     }
 }
 
 
-int[,] matrix = CreateMatrix(4,5);
-int result_array
+int[,] matrix = CreateMatrix(3,5);
+double[] result_array = AverageColumn(matrix);
+PrintMatrix(matrix);
+PrintArray(result_array);
