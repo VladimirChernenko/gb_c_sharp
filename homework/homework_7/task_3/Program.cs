@@ -71,3 +71,5 @@ int[,] matrix = CreateMatrix(3,5);
 double[] result_array = AverageColumn(matrix);
 PrintMatrix(matrix);
 PrintArray(result_array);
+
+// https://github.com/VladimirChernenko/gb_c_sharp/pull/8
