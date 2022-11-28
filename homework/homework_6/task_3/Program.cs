@@ -28,4 +28,63 @@ void PrintMatrix(double[,] matrix)
     }
 }
 
-double[] MaxNumber()
+double MaxNumber(double[] array)
+{
+    double max = array[0];
+    for (int i = 0; i < array.Length; i++)
+    {
+        if (array[i] > max) max = array[i];
+    }
+    return max;
+}
+
+double MinNumber(double[] array)
+{
+    double min = array[0];
+    for (int i = 0; i < array.Length; i++)
+    {
+        if (array[i] < min) min = array[i];
+    }
+    return min;
+}
+
+double SumMaxNumMatrixStr(double[,] matrix)
+{
+    double[] array = new double[matrix.GetLength(1)];
+    double sum = 0;
+    for (int i = 0; i < matrix.GetLength(0); i++)
+    {
+        for (int j = 0; j < matrix.GetLength(1); j++)
+        {
+            array[j] = matrix[i, j];
+        }
+        sum += MaxNumber(array);
+    }
+    return sum;
+}
+
+double SumMinNumMatrixColumn(double[,] matrix)
+{
+    double[] array = new double[matrix.GetLength(0)];
+    double sum = 0;
+    for (int i = 0; i < matrix.GetLength(1); i++)
+    {
+        for (int j = 0; j < matrix.GetLength(0); j++)
+        {
+            array[j] = matrix[j, i];
+        }
+        sum += MinNumber(array);
+    }
+    return sum;
+}
+
+void Main()
+{
+    double[,] matrix = CreateMatrix(5, 7);
+    PrintMatrix(matrix);
+    double max = SumMaxNumMatrixStr(matrix);
+    double min = SumMinNumMatrixColumn(matrix);
+    Console.WriteLine($"Answer: {Math.Round(max - min, 2)}.");
+}
+
+Main();
