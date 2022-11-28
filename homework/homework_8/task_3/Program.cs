@@ -41,7 +41,7 @@ bool ValidateMultiplicationMatrix(int[,] matrix1, int[,] matrix2)
 int[,] MultiplicationMatrix(int[,] matrix1, int[,] matrix2)
 {
     int sum = 0;
-    int[,] resultMatrix = new int[matrix1.GetLength(0), matrix1.GetLength(1)];
+    int[,] resultMatrix = new int[matrix1.GetLength(0), matrix2.GetLength(1)];
     for (int i = 0; i < matrix1.GetLength(0); i++)
     {
         for (int j = 0; j < matrix1.GetLength(1); j++)
@@ -50,7 +50,7 @@ int[,] MultiplicationMatrix(int[,] matrix1, int[,] matrix2)
             {
                 sum += matrix1[i, x] * matrix2[x, j];
             }
-            resultMatrix[i, j] = sum;
+            resultMatrix[i, j] = sum; 
             sum = 0;
         }
         
@@ -62,7 +62,7 @@ void Main()
 {
     int[,] matrix1 = CreateMatrix(2,2);
     int[,] matrix2 = CreateMatrix(2,2);
-    int[,] multiMatrix = new int[matrix1.GetLength(0), matrix1.GetLength(1)];
+    int[,] multiMatrix = new int[matrix1.GetLength(0), matrix2.GetLength(1)];
     if (ValidateMultiplicationMatrix(matrix1, matrix2))
     {
         multiMatrix = MultiplicationMatrix(matrix1, matrix2);
